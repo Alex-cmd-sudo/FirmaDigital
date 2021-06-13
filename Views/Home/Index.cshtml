@@ -1,0 +1,56 @@
+﻿@model FirmaDigital.Models.Firma.Firma
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Firma</h1>
+    <p>Firme lo mas parecido a su INE o IFE</p>
+</div>
+
+<div>
+    @using (Html.BeginForm("Firma", "Home", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Firma_, new { id = "firma", type = "text", style = "display:none" })
+
+        <div class="wrapper align-content-center align-items-center">
+            <canvas id="signature-pad" class="signature-pad" width=300 height=200 style="border:1px solid #000000"></canvas>
+        </div>
+        <br />
+        <br />
+        <button type="submit">Save</button>
+    }
+    <div class="align-content-center align-items-center">
+        <button id="save-png">Save as PNG</button>
+        <button id="save-jpeg">Save as JPEG</button>
+        <button id="save-svg">Save as SVG</button>
+        <button id="draw">Draw</button>
+        <button id="erase">Erase</button>
+        <button id="clear">Clear</button>
+    </div>
+</div>
+<script>
+    var firma = document.getElementById('signature-pad');
+    console.log(firma);   
+    
+    //$(document).ready({
+        //dataURL = signaturePad.toDataURL().replace('data:image/png;base64,', '');
+        //var data = JSON.stringify(
+        //    {
+        //        value: dataURL
+        //    });
+
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/api/signature",
+        //    contentType: false,
+        //    processData: false,
+        //    data: data,
+        //    contentType: "application/json; charset=utf-8",
+        //    success: function (msg) {
+        //        alert("Done!");
+        //    },
+        //    error: onWebServiceFailed
+        //});
+    //});
+</script>
